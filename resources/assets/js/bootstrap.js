@@ -1,3 +1,13 @@
+import lodash from 'lodash';
+import jQuery from 'jquery';
+
+window._ = lodash;
+window.$ = window.jQuery = window.jquery = jQuery;
+
+require('bootstrap-sass');
+
+require('../vendor/AdminLTE-2.4.0/dist/js/adminlte.min');
+
 import axios from 'axios';
 import Vue from 'vue';
 
