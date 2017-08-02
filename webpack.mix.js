@@ -17,8 +17,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .combine([
         'resources/assets/vendor/AdminLTE-2.4.0/dist/css/AdminLTE.min.css',
         'resources/assets/vendor/AdminLTE-2.4.0/dist/css/skins/_all-skins.min.css',
-        'resources/assets/vendor/AdminLTE-2.4.0/dist/css/alt/AdminLTE-bootstrap-social.min.css',
-        'resources/assets/vendor/AdminLTE-2.4.0/dist/css/alt/AdminLTE-fullcalendar.min.css',
-        'resources/assets/vendor/AdminLTE-2.4.0/dist/css/alt/AdminLTE-select2.min.css',
         'public/css/app_pre.css',
     ],'public/css/app.css');

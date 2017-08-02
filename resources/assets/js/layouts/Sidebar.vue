@@ -13,14 +13,15 @@
           </template>
           <template v-else>
             <li class="treeview menu-open">
-              <a href="#"><i class="fa fa-link"></i> <span>{{link.name}}</span>
+              <a href="#">
+                <span>{{link.name}}</span>
                 <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
               </a>
               <ul class="treeview-menu" style="display: block">
                 <li v-for="sub_link in link.sub_links">
-                  <router-link :to="sub_link.path">{{sub_link.name}}</router-link>
+                  <router-link :to="sub_link.path"><i class="fa fa-link"></i>{{sub_link.name}}</router-link>
                 </li>
               </ul>
             </li>
@@ -41,14 +42,21 @@
 					name: 'Example',
 					path: '/example',
 				}, {
-					name: '123',
-					sub_links: [{name: 123, path: '/123'}]
+					name: '统计概览',
+					sub_links: [
+						{name: '所有', path: '/dashboard/all'},
+						{name: '所有2', path: '/dashboard/all2'}
+					]
+				}, {
+					name: '用户行为分析',
+					sub_links: [{name: '事件分析', path: '/behavior/event'}]
 				}]
 			}
 		},
-    mounted() {
-      this.active_link();
-    },
+		mounted() {
+			$('ul').tree({accordion: false});
+			this.active_link();
+		},
 		watch: {
 			'$route': 'active_link',
 		},

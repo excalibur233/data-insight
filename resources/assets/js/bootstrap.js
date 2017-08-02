@@ -5,6 +5,8 @@ window._ = lodash;
 window.$ = window.jQuery = window.jquery = jQuery;
 
 require('bootstrap-sass');
+require('select2');
+require('select2/dist/js/i18n/zh-CN');
 
 require('../vendor/AdminLTE-2.4.0/dist/js/adminlte.min');
 
