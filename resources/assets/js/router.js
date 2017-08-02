@@ -1,10 +1,8 @@
 import Router from 'vue-router';
 
- import Example from './components/Example.vue';
-
 
 const routes = [
-  { path: '/example', component: Example },
+  { path: '/example', component: require('./components/Example.vue') },
 ];
 
 export default new Router({
