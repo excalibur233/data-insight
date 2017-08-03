@@ -68,3 +68,22 @@
 		}
 	}
 </script>
+
+<style lang="scss" scoped>
+  .sidebar-menu {
+    > li.menu-open > a {
+      color: inherit !important;
+      background-color: inherit !important;
+    }
+    > li.active {
+      color: #fff;
+      background-color: #1e282c;
+    }
+
+    //ul.treeview-menu {
+    //  > li.active > a {
+    //    background-color: #3C8DBC;
+    //  }
+    //}
+  }
+</style>

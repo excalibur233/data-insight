@@ -1,17 +1,18 @@
 import lodash from 'lodash';
 import jQuery from 'jquery';
+import axios from 'axios';
+import Vue from 'vue';
 
 window._ = lodash;
-window.$ = window.jQuery = window.jquery = jQuery;
+window.$ = jQuery;
+window.jQuery = jQuery;
+window.jquery = jQuery;
 
 require('bootstrap-sass');
 require('select2');
 require('select2/dist/js/i18n/zh-CN');
 
 require('../vendor/AdminLTE-2.4.0/dist/js/adminlte.min');
-
-import axios from 'axios';
-import Vue from 'vue';
 
 window.Vue = Vue;
 
@@ -21,6 +22,7 @@ const token = document.head.querySelector('meta[name="csrf-token"]');
 if (token) {
   window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
+// eslint-disable-next-line no-console
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
