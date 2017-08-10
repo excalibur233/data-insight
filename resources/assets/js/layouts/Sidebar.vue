@@ -1,89 +1,71 @@
 <template>
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar Menu -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <!--<li class="header">HEADER</li>-->
-        <template v-for="link in links">
-          <template v-if="link.path">
-            <li>
-              <router-link :to="link.path"><i class="fa fa-link"></i> <span>{{link.name}}</span></router-link>
-            </li>
-          </template>
-          <template v-else>
-            <li class="treeview menu-open">
-              <a href="#">
-                <span>{{link.name}}</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu" style="display: block">
-                <li v-for="sub_link in link.sub_links">
-                  <router-link :to="sub_link.path"><i class="fa fa-link"></i>{{sub_link.name}}</router-link>
-                </li>
-              </ul>
-            </li>
-          </template>
-        </template>
-      </ul>
-      <!-- /.sidebar-menu -->
-    </section>
-    <!-- /.sidebar -->
+  <aside>
+    <el-row>
+      <el-col :span="24">
+        <el-menu :default-active="active" :default-openeds="openeds" router>
+          <el-submenu v-for="(link, index) in links" :index="link.name" :key="link.name">
+            <template slot="title">{{link.name}}</template>
+            <el-menu-item-group v-for="sub_link in link.sub_links" :key="sub_link.name">
+              <el-menu-item :index="sub_link.path">
+                <i class="el-icon-message"></i>{{sub_link.name}}
+              </el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+        </el-menu>
+      </el-col>
+    </el-row>
   </aside>
 </template>
 
 <script>
-	export default {
-		data(){
-			return {
-				links: [{
-					name: 'Example',
-					path: '/example',
-				}, {
-					name: '统计概览',
-					sub_links: [
-						{name: '所有', path: '/dashboard/all'},
-						{name: '所有2', path: '/dashboard/all2'}
-					]
-				}, {
-					name: '用户行为分析',
-					sub_links: [{name: '事件分析', path: '/behavior/event'}]
-				}]
-			}
-		},
-		mounted() {
-			$('ul').tree({accordion: false});
-			this.active_link();
-		},
-		watch: {
-			'$route': 'active_link',
-		},
-		methods: {
-			active_link: function () {
-				$(`a`).parents('li').removeClass('active');
-				$(`a[href='#${this.$route.path}']`).parent('li').addClass('active').parents('.treeview').addClass('active');
-			}
-		}
-	}
+  export default {
+    data(){
+      return {
+        links: [
+          {
+            name: 'Example',
+            sub_links: [
+              { name: 'Example1', path: '/example' },
+            ]
+          }, {
+            name: '统计概览',
+            sub_links: [
+              { name: '所有', path: '/dashboard/all' },
+              { name: '所有2', path: '/dashboard/all2' }
+            ]
+          }, {
+            name: '用户行为分析',
+            sub_links: [ { name: '事件分析', path: '/behavior/event' } ]
+          }
+        ],
+        active: '/dashboard/all',
+      }
+    },
+    computed: {
+      openeds: function () {
+        return this.links.map((val) => val.name)
+      },
+    },
+  }
 </script>
 
-<style lang="scss" scoped>
-  .sidebar-menu {
-    > li.menu-open > a {
-      color: inherit !important;
-      background-color: inherit !important;
-    }
-    > li.active {
-      color: #fff;
-      background-color: #1e282c;
+<style lang="scss">
+  aside {
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    width: 230px;
+    overflow-y: auto;
+    >div {
+      height: 100%;
+      background-color: #eef1f6;
     }
 
-    //ul.treeview-menu {
-    //  > li.active > a {
-    //    background-color: #3C8DBC;
-    //  }
-    //}
+    .el-menu-item-group > div {
+      display: none;
+    }
+    .el-menu-item.is-active {
+      background-color: #d1dbe5;
+    }
   }
 </style>
