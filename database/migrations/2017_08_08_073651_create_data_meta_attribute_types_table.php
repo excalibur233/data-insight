@@ -15,7 +15,7 @@ class CreateDataMetaAttributeTypesTable extends Migration
     {
         Schema::create('data_meta_attribute_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('meta_attribute_type_name')->comment('ÊôÐÔÀàÐÍ');
+            $table->string('meta_attribute_type_name')->comment('å±žæ€§ç±»åž‹');
             $table->timestamps();
         });
     }
