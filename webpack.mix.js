@@ -13,9 +13,4 @@ const {mix} = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js')
     .extract(['vue'])
-    .sass('resources/assets/sass/app.scss', 'public/css/app_pre.css')
-    .combine([
-        'resources/assets/vendor/AdminLTE-2.4.0/dist/css/AdminLTE.min.css',
-        'resources/assets/vendor/AdminLTE-2.4.0/dist/css/skins/_all-skins.min.css',
-        'public/css/app_pre.css',
-    ],'public/css/app.css');
+    .sass('resources/assets/sass/app.scss', 'public/css/app.css');

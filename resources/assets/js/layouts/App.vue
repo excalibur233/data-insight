@@ -1,16 +1,16 @@
 <template>
     <div>
+        <topNavbar><slot></slot></topNavbar>
         <sidebar></sidebar>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
-    import Sidebar from './Sidebar.vue';
-
     export default {
         components: {
-            sidebar: Sidebar,
+            sidebar: require('./Sidebar.vue'),
+            topNavbar: require('./TopNavbar.vue'),
         }
     }
 </script>
