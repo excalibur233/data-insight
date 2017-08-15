@@ -15,10 +15,10 @@ class CreateDataUserActionsTable extends Migration
     {
         Schema::create('data_user_actions', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('data_user_id')->comment('用户ID');
-            $table->string('data_user_identify_id')->comment('用户识别ID');
-            $table->string('data_event_name')->comment('事件名称');
-            $table->unsignedInteger('data_event_id')->comment('对应事件id');
+            $table->unsignedInteger('data_user_id')->nullable()->comment('用户ID');
+            $table->string('data_user_identify_id')->nullable()->comment('用户识别ID');
+            $table->string('data_event_name')->nullable()->comment('事件名称 类名或表名');
+            $table->unsignedInteger('data_event_id')->nullable()->comment('对应事件id');
             $table->timestamps();
 
             $table->foreign('data_user_id')->references('id')->on('data_users');

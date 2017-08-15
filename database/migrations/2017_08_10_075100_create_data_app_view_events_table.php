@@ -15,13 +15,16 @@ class CreateDataAppViewEventsTable extends Migration
     {
         Schema::create('data_app_view_events', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('data_user_id')->comment('用户ID');
-            $table->string('data_user_identify_id')->comment('用户识别ID');
-            // TODO 补全字段
+            $table->unsignedInteger('data_user_id')->nullable()->comment('用户ID');
+            $table->unsignedInteger('data_user_identify_id')->nullable()->comment('用户识别ID');
+            $table->unsignedInteger('data_event_preset_attribute_id')->nullable()->comment('事件预设属性');
+
+            $table->string('title')->nullable()->comment('标题');
             $table->timestamps();
 
             $table->foreign('data_user_id')->references('id')->on('data_users');
             $table->foreign('data_user_identify_id')->references('identify_id')->on('data_users');
+            $table->foreign('data_event_preset_attribute_id')->references('id')->on('data_event_preset_attributes');
         });
 
         Schema::create('data_app_view_event_meta_attributes', function (Blueprint $table) {
@@ -31,7 +34,7 @@ class CreateDataAppViewEventsTable extends Migration
             $table->string('meta_attribute_value');
             $table->timestamps();
 
-            $table->foreign('data_page_view_event_id')->references('id')->on('data_page_view_events');
+            $table->foreign('data_page_view_event_id')->references('id')->on('data_app_view_events');
             $table->foreign('data_meta_attribute_type_id')->references('id')->on('data_meta_attribute_types');
         });
     }
@@ -46,6 +49,7 @@ class CreateDataAppViewEventsTable extends Migration
         Schema::table('data_app_view_events', function (Blueprint $table) {
             $table->dropForeign('data_app_view_events_data_user_id_foreign');
             $table->dropForeign('data_app_view_events_data_user_identify_id_foreign');
+            $table->dropForeign('data_app_view_events_data_event_preset_attribute_id_foreign');
         });
         Schema::table('data_app_view_event_meta_attributes', function (Blueprint $table) {
             $table->dropForeign('data_app_view_event_meta_attributes_data_page_view_event_id_foreign');

@@ -15,13 +15,20 @@ class CreateDataPageViewEventsTable extends Migration
     {
         Schema::create('data_page_view_events', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('data_user_id')->comment('用户ID');
-            $table->string('data_user_identify_id')->comment('用户识别ID');
-            // TODO 补全字段
+            $table->unsignedInteger('data_user_id')->nullable()->comment('用户ID');
+            $table->unsignedInteger('data_user_identify_id')->nullable()->comment('用户识别ID');
+            $table->unsignedInteger('data_event_preset_attribute_id')->nullable()->comment('事件预设属性');
+
+            $table->string('page_url')->nullable()->comment('页面地址');
+            $table->string('page_title')->nullable()->comment('页面标题');
+            $table->string('referrer_url')->nullable()->comment('前向地址');
+            $table->string('referrer_host')->nullable()->comment('前向域名');
+            $table->string('referrer_host')->nullable()->comment('前向域名');
             $table->timestamps();
 
             $table->foreign('data_user_id')->references('id')->on('data_users');
             $table->foreign('data_user_identify_id')->references('identify_id')->on('data_users');
+            $table->foreign('data_event_preset_attribute_id')->references('id')->on('data_event_preset_attributes');
         });
 
         Schema::create('data_page_view_event_meta_attributes', function (Blueprint $table) {
@@ -46,6 +53,7 @@ class CreateDataPageViewEventsTable extends Migration
         Schema::table('data_page_view_events', function (Blueprint $table) {
             $table->dropForeign('data_page_view_events_data_user_id_foreign');
             $table->dropForeign('data_page_view_events_data_user_identify_id_foreign');
+            $table->dropForeign('data_page_view_events_data_event_preset_attribute_id_foreign');
         });
         Schema::table('data_page_view_event_meta_attributes', function (Blueprint $table) {
             $table->dropForeign('data_page_view_event_meta_attributes_data_page_view_event_id_foreign');
