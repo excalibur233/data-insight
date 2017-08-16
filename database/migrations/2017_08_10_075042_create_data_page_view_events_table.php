@@ -23,7 +23,6 @@ class CreateDataPageViewEventsTable extends Migration
             $table->string('page_title')->nullable()->comment('页面标题');
             $table->string('referrer_url')->nullable()->comment('前向地址');
             $table->string('referrer_host')->nullable()->comment('前向域名');
-            $table->string('referrer_host')->nullable()->comment('前向域名');
             $table->timestamps();
 
             $table->foreign('data_user_id')->references('id')->on('data_users');
