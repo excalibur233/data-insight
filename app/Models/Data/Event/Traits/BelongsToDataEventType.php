@@ -19,4 +19,14 @@ trait BelongsToDataEventType
     {
         return $this->belongsTo(DataEventType::class);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDataEventTypeName()
+    {
+
+        return $this->dataEventType()->data_event_type_name;
+
+    }
 }

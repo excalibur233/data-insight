@@ -15,7 +15,7 @@ class CreateDataMetaEventsTable extends Migration
     {
         Schema::create('data_event_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('attribute_type_name')->comment('事件类型');
+            $table->string('data_event_type_name')->comment('事件类型');
             $table->timestamps();
         });
 
