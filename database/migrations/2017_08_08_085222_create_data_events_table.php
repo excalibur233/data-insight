@@ -99,6 +99,11 @@ class CreateDataEventsTable extends Migration
             $table->dropForeign('data_attribute_data_events_data_event_id_foreign');
             $table->dropForeign('data_attribute_data_events_data_attribute_id_foreign');
         });
+        Schema::table('data_attribute_data_event_types', function (Blueprint $table) {
+            $table->dropForeign('data_attribute_data_event_types_data_event_type_id_foreign');
+            $table->dropForeign('data_attribute_data_event_types_data_attribute_id_foreign');
+        });
+        Schema::dropIfExists('data_attribute_data_event_types');
         Schema::dropIfExists('data_attribute_data_events');
         Schema::dropIfExists('data_events');
     }

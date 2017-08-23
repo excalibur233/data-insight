@@ -5,11 +5,11 @@ namespace App\Models\Data\Attribute\Traits;
 use App\Models\Data\Attribute\DataAttribute;
 
 /**
- * Class BelongsToManyAttributes
- * @package App\Models\Data\User\Traits
+ * Class BelongsToDataManyAttributes
+ * @package App\Models\Data\Attribute\Traits
  * @mixin \Illuminate\Database\Eloquent\Model
  */
-trait BelongsToManyAttributes
+trait BelongsToDataManyAttributes
 {
 
     /**

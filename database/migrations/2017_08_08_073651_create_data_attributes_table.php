@@ -16,6 +16,8 @@ class CreateDataAttributesTable extends Migration
         Schema::create('data_attributes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('attribute_name')->comment('属性类型');
+            $table->string('attribute_name_cn')->comment('属性中文名称');
+            $table->text('attribute_name_description')->comment('属性描述');
             $table->timestamps();
         });
     }

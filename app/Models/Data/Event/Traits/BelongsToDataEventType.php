@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Data\User\Traits;
+namespace App\Models\Data\Event\Traits;
 
 use App\Models\Data\Event\DataEventType;
 

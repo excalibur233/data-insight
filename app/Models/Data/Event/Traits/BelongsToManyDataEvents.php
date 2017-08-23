@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models\Data\User\Traits;
+namespace App\Models\Data\Event\Traits;
 
 use App\Models\Data\Event\DataEvent;
 
 
 /**
  * Class BelongsToManyDataEvents
- * @package App\Models\Data\User\Traits
+ * @package App\Models\Data\Traits
  * @mixin \Illuminate\Database\Eloquent\Model
  */
 trait BelongsToManyDataEvents
