@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDataMetaEventsTable extends Migration
+class CreateDataEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -74,7 +74,7 @@ class CreateDataMetaEventsTable extends Migration
         Schema::create('data_attribute_data_events', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('data_event_id')->comment('元事件id');
-            $table->string('data_attribute_id')->comment('元属性类型id');
+            $table->unsignedInteger('data_attribute_id')->comment('元属性类型id');
             $table->unsignedInteger('data_attribute_value');
             $table->timestamps();
 
