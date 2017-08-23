@@ -60,6 +60,17 @@ class CreateDataMetaEventsTable extends Migration
             $table->foreign('data_event_type_id')->references('id')->on('data_event_types');
         });
 
+
+        Schema::create('data_attribute_data_event_types', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('data_event_type_id')->comment('时间类型ID');
+            $table->unsignedInteger('data_attribute_id')->comment('属性ID');
+            $table->timestamps();
+
+            $table->foreign('data_event_type_id')->references('id')->on('data_event_types');
+            $table->foreign('data_attribute_id')->references('id')->on('data_attributes');
+        });
+
         Schema::create('data_attribute_data_events', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('data_event_id')->comment('元事件id');
