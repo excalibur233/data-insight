@@ -1,31 +1,70 @@
 <template>
-  <div class="content">
+  <el-col class="content">
     <el-row>
       <el-col :span="24">
-        <el-select v-model="value8" filterable placeholder="请选择">
-          <el-option
-                  v-for="item in options"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value">
-          </el-option>
-        </el-select>
-        <el-select v-model="value8" filterable placeholder="请选择">
-          <el-option
-                  v-for="item in options"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value">
-          </el-option>
-        </el-select>
+        <el-form ref="form" :inline="true">
+          <el-form-item label="显示">
+            <el-select v-model="value8" filterable placeholder="请选择">
+              <el-option
+                      v-for="item in options"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="的">
+            <el-select v-model="value8" filterable placeholder="请选择">
+              <el-option
+                      v-for="item in options"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </el-form>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="24">
+        <span class="demonstration">范围</span>
+        <el-date-picker
+                v-model="value9"
+                type="daterange"
+                align="right"
+                placeholder="选择日期范围"
+                :picker-options="pickerOptions2">
+        </el-date-picker>
+      </el-col>
+      <el-col :span="24">
+        <ve-line :data="chartData" :settings="chartSettings"></ve-line>
       </el-col>
     </el-row>
     <el-row>
       <el-col>
-        <ve-line :data="chartData" :settings="chartSettings"></ve-line>
+        <el-table
+                :data="tableData"
+                border
+                style="width: 100%">
+          <el-table-column
+                  prop="date"
+                  label="日期"
+                  width="180">
+          </el-table-column>
+          <el-table-column
+                  prop="name"
+                  label="姓名"
+                  width="180">
+          </el-table-column>
+          <el-table-column
+                  prop="address"
+                  label="地址">
+          </el-table-column>
+        </el-table>
       </el-col>
     </el-row>
-  </div>
+  </el-col>
 </template>
 
 <script>
@@ -50,6 +89,52 @@
             label: '北京烤鸭'
           } ],
         value8: '',
+        tableData: [
+          {
+            date: '2016-05-02',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          }, {
+            date: '2016-05-04',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1517 弄'
+          }, {
+            date: '2016-05-01',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1519 弄'
+          }, {
+            date: '2016-05-03',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1516 弄'
+          } ],
+        pickerOptions2: {
+          shortcuts: [ {
+            text: '最近一周',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit('pick', [ start, end ]);
+            }
+          }, {
+            text: '最近一个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+              picker.$emit('pick', [ start, end ]);
+            }
+          }, {
+            text: '最近三个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+              picker.$emit('pick', [ start, end ]);
+            }
+          } ]
+        },
+        value9: '',
       }
     },
     created: function () {
@@ -72,7 +157,7 @@
         },
         yAxisType: [ 'KMB', 'percent' ],
         yAxisName: [ '销售额', '占比' ],
-        area: true,
+        area: false,
         stack: {
           '销售额': [ '销售额-1季度', '销售额-2季度' ]
         }
@@ -83,7 +168,6 @@
 
 <style lang="scss" scpoed>
   .content {
-    margin-left: 230px;
-    padding: 15px;
+    padding: 15px 15px 15px 245px;
   }
 </style>
