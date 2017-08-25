@@ -25,7 +25,7 @@
                 <template  slot="title">
                     {{ Auth::user()->name }}
                 </template>
-                <el-menu-item index="{{ route('logout') }}">
+                <el-menu-item index="/">
                     <a href="{{ route('logout') }}"
                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                         Logout

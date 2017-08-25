@@ -7,8 +7,13 @@ const routerView = {
 const router = new Router({
   mode: 'history',
   routes: [
+    { path: '*', component: require('./errors/NotFound.vue') },
     {
       path: '/',
+      redirect: '/dashboard/all',
+    },
+    {
+      path: '/home',
       redirect: '/dashboard/all',
     },
     {
@@ -22,14 +27,13 @@ const router = new Router({
         { path: 'event', component: require('./pages/behavior/EventAnalysis.vue') },
       ],
     },
-
     {
       path: '/dashboard',
       component: routerView,
       children: [
         { path: 'all', component: require('./pages/dashboard/All.vue') },
       ],
-    },
+    }
   ],
 });
 

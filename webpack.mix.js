@@ -1,4 +1,5 @@
-const {mix} = require('laravel-mix');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const { mix } = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -13,4 +14,5 @@ const {mix} = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js')
     .extract(['vue'])
-    .sass('resources/assets/sass/app.scss', 'public/css/app.css');
+    .sass('resources/assets/sass/app.scss', 'public/css/app.css')
+    .copyDirectory('resources/assets/images', 'public/images');

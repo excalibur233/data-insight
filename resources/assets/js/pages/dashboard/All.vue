@@ -1,5 +1,5 @@
 <template>
-  <div class="content-wrapper">
+  <div class="content">
     test
   </div>
 </template>
