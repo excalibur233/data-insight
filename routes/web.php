@@ -15,13 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+
+Route::group(['prefix' => 'event-types'], function () {
+    Route::any('all', 'Data\EventTypeController@index');
+    Route::any('detail', 'Data\EventTypeController@show');
+});
+
 Route::group(['prefix' => 'data'], function () {
     Route::any('count-times', 'Data\EventController@countTimes');
     Route::any('count-users', 'Data\EventController@countUsers');
     Route::any('avg-users', 'Data\EventController@avgUsers');
 });
 
-Auth::routes();
-
 Route::any('/{any?}', 'HomeController@index')->name('home')->where('any','.*');
+
+
 
