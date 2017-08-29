@@ -21,6 +21,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Data\Event\DataEventType whereDataEventTypeName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Data\Event\DataEventType whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Data\Event\DataEventType whereUpdatedAt($value)
+ * @property string $data_event_type_name_cn 事件类型-中文
+ * @property string $data_event_name_description 事件类型描述
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Data\Event\DataEventType whereDataEventNameDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Data\Event\DataEventType whereDataEventTypeNameCn($value)
  */
 class DataEventType extends Model
 {

@@ -19,6 +19,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Data\Attribute\DataAttribute whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Data\Attribute\DataAttribute whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $data_attribute_name 属性类型
+ * @property string $data_attribute_name_cn 属性中文名称
+ * @property string $data_attribute_name_description 属性描述
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Data\Attribute\DataAttribute whereDataAttributeName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Data\Attribute\DataAttribute whereDataAttributeNameCn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Data\Attribute\DataAttribute whereDataAttributeNameDescription($value)
  */
 class DataAttribute extends Model
 {
