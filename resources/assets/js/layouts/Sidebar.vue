@@ -56,6 +56,7 @@
     bottom: 0;
     width: 230px;
     overflow-y: auto;
+    z-index: 2;
     >div {
       height: 100%;
       background-color: #eef1f6;
