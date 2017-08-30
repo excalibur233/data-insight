@@ -1,5 +1,6 @@
 <?php
 
+use DataInsight\DataSystem\EventModel\AttributeType;
 use Illuminate\Database\Seeder;
 
 class InitialSeeder extends Seeder
@@ -11,13 +12,16 @@ class InitialSeeder extends Seeder
      */
     public function run()
     {
-        $this->createAttributes();
+        $this->createAttributeTypes();
         //$this->createEventTypes();
     }
 
-    protected function createAttributes()
+    protected function createAttributeTypes()
     {
-        \App\Models\Data\Attribute\DataAttribute::create(['attribute_name' => 'referrer']);
+        factory(AttributeType::class)->create([
+            'name' => 'test',
+            'label' => ''
+        ]);
     }
 
     protected function createEventTypes()

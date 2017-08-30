@@ -15,7 +15,7 @@ class CreateTargetUsersTable extends Migration
     {
         Schema::create('target_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('identify_id')->unique()->comment('识别ID');
+            $table->uuid('distinct_id')->comment('系统分配的唯一ID');
             // 用户基本信息
             $table->string('mobile')->nullable()->unique()->comment('手机号');
             $table->string('email')->nullable()->unique()->comment('邮箱');

@@ -17,9 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::group(['prefix' => 'event-types'], function () {
-    Route::any('all', 'Data\EventTypeController@index');
-    Route::any('detail', 'Data\EventTypeController@show');
+Route::group(['prefix' => 'frontend', 'namespace' => 'Frontend'], function () {
+    Route::group(['prefix' => 'event-analysis'], function () {
+        Route::get('event-list', 'EventAnalysisController@index');
+    });
 });
 
 Route::group(['prefix' => 'data'], function () {
