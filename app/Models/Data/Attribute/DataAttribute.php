@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models\Data\Attribute;
+namespace DataInsight\Models\Data\Attribute;
 
-use App\Models\Data\User\Traits\BelongsToManyDataEvents;
+use DataInsight\Models\Data\User\Traits\BelongsToManyDataEvents;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class DataAttribute
- * @package App\Models\Data\Attribute
+ * @package DataInsight\Models\Data\Attribute
  */
 class DataAttribute extends Model
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models\Data\User\Traits;
+namespace DataInsight\Models\Data\User\Traits;
 
-use App\Models\Data\Event\DataEventType;
+use DataInsight\Models\Data\Event\DataEventType;
 
 /**
  * Class BelongsToDataEventType
- * @package App\Models\Data\User\Traits
+ * @package DataInsight\Models\Data\User\Traits
  * @mixin \Illuminate\Database\Eloquent\Model
  */
 trait BelongsToDataEventType

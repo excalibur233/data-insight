@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models\Data\User;
+namespace DataInsight\Models\Data\User;
 
-use App\Models\Data\Event\Traits\HasManyDataEvents;
+use DataInsight\Models\Data\Event\Traits\HasManyDataEvents;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class DataUser
- * @package App\Models\Data\User
+ * @package DataInsight\Models\Data\User
  */
 class DataUser extends Model
 {

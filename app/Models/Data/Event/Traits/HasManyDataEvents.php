@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models\Data\Event\Traits;
+namespace DataInsight\Models\Data\Event\Traits;
 
-use App\Models\Data\Event\DataEvent;
+use DataInsight\Models\Data\Event\DataEvent;
 
 /**
  * Class HasManyDataEvents
- * @package App\Models\Data\Event\Traits
+ * @package DataInsight\Models\Data\Event\Traits
  * @mixin \Illuminate\Database\Eloquent\Model
  */
 trait HasManyDataEvents

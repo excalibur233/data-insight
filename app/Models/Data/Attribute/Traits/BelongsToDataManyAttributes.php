@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models\Data\Attribute\Traits;
+namespace DataInsight\Models\Data\Attribute\Traits;
 
-use App\Models\Data\Attribute\DataAttribute;
+use DataInsight\Models\Data\Attribute\DataAttribute;
 
 /**
  * Class BelongsToManyAttributes
- * @package App\Models\Data\User\Traits
+ * @package DataInsight\Models\Data\User\Traits
  * @mixin \Illuminate\Database\Eloquent\Model
  */
 trait BelongsToManyAttributes

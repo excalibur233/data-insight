@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDataUsersTable extends Migration
+class CreateTargetUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDataUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('data_users', function (Blueprint $table) {
+        Schema::create('target_users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('identify_id')->unique()->comment('识别ID');
             // 用户基本信息
@@ -53,6 +53,6 @@ class CreateDataUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_users');
+        Schema::dropIfExists('target_users');
     }
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Models\Data\Event;
+namespace DataInsight\Models\Data\Event;
 
-use App\Models\Data\Attribute\Traits\BelongsToManyAttributes;
-use App\Models\Data\Event\Traits\HasManyDataEvents;
+use DataInsight\Models\Data\Attribute\Traits\BelongsToManyAttributes;
+use DataInsight\Models\Data\Event\Traits\HasManyDataEvents;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class DataEventType
- * @package App\Models\Data\Event
+ * @package DataInsight\Models\Data\Event
  */
 class DataEventType extends Model
 {

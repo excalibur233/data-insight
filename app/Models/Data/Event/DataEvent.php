@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Models\Data\Event;
+namespace DataInsight\Models\Data\Event;
 
-use App\Models\Data\Attribute\Traits\BelongsToManyAttributes;
-use App\Models\Data\User\Traits\BelongsToDataEventType;
-use App\Models\Data\User\Traits\BelongsToDataUser;
+use DataInsight\Models\Data\Attribute\Traits\BelongsToManyAttributes;
+use DataInsight\Models\Data\User\Traits\BelongsToDataEventType;
+use DataInsight\Models\Data\User\Traits\BelongsToDataUser;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class DataEvent
- * @package App\Models\Data\Event
+ * @package DataInsight\Models\Data\Event
  */
 class DataEvent extends Model
 {

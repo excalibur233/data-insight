@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models\Data\User\Traits;
+namespace DataInsight\Models\Data\User\Traits;
 
-use App\Models\Data\User\DataUser;
+use DataInsight\Models\Data\User\DataUser;
 
 /**
  * Class BelongsToDataUser
- * @package App\Models\Data\User\Traits
+ * @package DataInsight\Models\Data\User\Traits
  * @mixin \Illuminate\Database\Eloquent\Model
  */
 trait BelongsToDataUser
