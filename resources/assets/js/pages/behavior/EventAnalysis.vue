@@ -162,6 +162,16 @@
           '销售额': [ '销售额-1季度', '销售额-2季度' ]
         }
       };
+      this.data_require();
+    },
+    methods: {
+      data_require(){
+        $.post('/event-types/all', {}, function (data) {
+          if (data.success) {
+            console.log(data.data)
+          }
+        })
+      }
     }
   }
 </script>
@@ -169,5 +179,11 @@
 <style lang="scss" scpoed>
   .content {
     padding: 15px 15px 15px 245px;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
   }
 </style>

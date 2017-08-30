@@ -17,5 +17,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::group(['prefix' => 'event-types'], function () {
+    Route::any('all', 'Data\EventTypeController@index');
+    Route::any('detail', 'Data\EventTypeController@show');
+});
+
+Route::group(['prefix' => 'data'], function () {
+
+});
+
 Route::any('/{any?}', 'HomeController@index')->name('home')->where('any','.*');
+
+
 

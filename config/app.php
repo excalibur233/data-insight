@@ -177,6 +177,7 @@ return [
         DataInsight\Providers\EventServiceProvider::class,
         DataInsight\Providers\RouteServiceProvider::class,
 
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class
     ],
 
     /*
