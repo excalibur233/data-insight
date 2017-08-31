@@ -14,6 +14,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use DataInsight\DataSystem\AnalyticObject\TargetUser\TargetUser;
+use DataInsight\DataSystem\EventModel\Attribute;
 use DataInsight\DataSystem\EventModel\AttributeType;
 use DataInsight\DataSystem\EventModel\EventType;
 
@@ -58,7 +59,45 @@ $factory->define(TargetUser::class, function(Faker\Generator $faker) {
         'is_member' => array_random([0, 1]),
         'province' => '湖北',
         'city' => array_random(['武汉', '宜昌']),
-        'signup_time' => $faker->dateTime()
+        'signup_time' => $faker->dateTimeThisYear(),
+        'register_channel' => array_random(['ohmate', 'medsci'])
     ];
 });
 
+$factory->define(\DataInsight\DataSystem\EventModel\Event::class, function(Faker\Generator $faker) {
+    return [
+        'target_user_id' => random_int(1, 10),
+        'type_id' => 1,
+        'description' => $faker->sentence,
+        'extra' => '{}',
+        'created_at' => $faker->dateTimeThisMonth()
+    ];
+});
+
+$factory->define(Attribute::class, function(Faker\Generator $faker) {
+    return [
+        'description' => '',
+        'extra' => '{}'
+    ];
+});
+
+$factory->state(Attribute::class, 'ip', function(Faker\Generator $faker) {
+    return [
+        'type_id' => 1,
+        'value' => $faker->ipv4,
+    ];
+});
+
+$factory->state(Attribute::class, 'agent', function(Faker\Generator $faker) {
+    return [
+        'type_id' => 2,
+        'value' => $faker->userAgent,
+    ];
+});
+
+$factory->state(Attribute::class, 'element_id', function(Faker\Generator $faker) {
+    return [
+        'type_id' => 3,
+        'value' => 'anchor_' . random_int(1, 10),
+    ];
+});
