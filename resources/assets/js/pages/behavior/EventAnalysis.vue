@@ -4,9 +4,9 @@
       <el-col :span="24">
         <el-form ref="form" :inline="true">
           <el-form-item label="显示">
-            <el-select v-model="value8" filterable placeholder="请选择">
+            <el-select @change="get_attribute_list" v-model="eventValue" filterable placeholder="请选择">
               <el-option
-                      v-for="item in options"
+                      v-for="item in events"
                       :key="item.value"
                       :label="item.label"
                       :value="item.value">
@@ -14,9 +14,9 @@
             </el-select>
           </el-form-item>
           <el-form-item label="的">
-            <el-select v-model="value8" filterable placeholder="请选择">
+            <el-select v-model="attributeValue" filterable placeholder="请选择">
               <el-option
-                      v-for="item in options"
+                      v-for="item in attributes"
                       :key="item.value"
                       :label="item.label"
                       :value="item.value">
@@ -25,18 +25,19 @@
           </el-form-item>
         </el-form>
       </el-col>
-    </el-row>
-    <el-row>
       <el-col :span="24">
         <span class="demonstration">范围</span>
         <el-date-picker
-                v-model="value9"
+                v-model="dateValue"
                 type="daterange"
                 align="right"
                 placeholder="选择日期范围"
                 :picker-options="pickerOptions2">
         </el-date-picker>
       </el-col>
+    </el-row>
+    <hr>
+    <el-row>
       <el-col :span="24">
         <ve-line :data="chartData" :settings="chartSettings"></ve-line>
       </el-col>
@@ -71,24 +72,10 @@
   export default {
     data(){
       return {
-        options: [
-          {
-            value: '选项1',
-            label: '黄金糕'
-          }, {
-            value: '选项2',
-            label: '双皮奶'
-          }, {
-            value: '选项3',
-            label: '蚵仔煎'
-          }, {
-            value: '选项4',
-            label: '龙须面'
-          }, {
-            value: '选项5',
-            label: '北京烤鸭'
-          } ],
-        value8: '',
+        events: [],
+        eventValue: '',
+        attributes: [],
+        attributeValue: '',
         tableData: [
           {
             date: '2016-05-02',
@@ -108,33 +95,28 @@
             address: '上海市普陀区金沙江路 1516 弄'
           } ],
         pickerOptions2: {
-          shortcuts: [ {
-            text: '最近一周',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit('pick', [ start, end ]);
+          shortcuts: [
+            {
+              text: '最近一周',
+              onClick(picker) {
+                const end = new Date();
+                const start = new Date();
+                start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+                picker.$emit('pick', [ start, end ]);
+              }
+            }, {
+              text: '最近一个月',
+              onClick(picker) {
+                const end = new Date();
+                const start = new Date();
+                start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+                picker.$emit('pick', [ start, end ]);
+              }
             }
-          }, {
-            text: '最近一个月',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-              picker.$emit('pick', [ start, end ]);
-            }
-          }, {
-            text: '最近三个月',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-              picker.$emit('pick', [ start, end ]);
-            }
-          } ]
+          ]
         },
-        value9: '',
+        dateValue: '',
+        chartData: {}
       }
     },
     created: function () {
@@ -162,17 +144,34 @@
           '销售额': [ '销售额-1季度', '销售额-2季度' ]
         }
       };
-      this.data_require();
+      this.get_event_list();
     },
     methods: {
-      data_require(){
-        $.post('/event-types/all', {}, function (data) {
-          if (data.success) {
-            console.log(data.data)
+      get_event_list(){
+        let e = this;
+        $.get('/frontend/event-analysis/event-list', {}, function (data) {
+          data = JSON.parse(data);
+          if (data) {
+            e.events = data.map((val) => ({
+              label: val.label,
+              value: val.id
+            }))
           }
-        })
-      }
-    }
+        });
+      },
+      get_attribute_list(){
+        let e = this;
+        $.get('/frontend/event-analysis/attribute-list', {}, function (data) {
+          data = JSON.parse(data);
+          if (data) {
+            e.attributes = data.map((val) => ({
+              label: val.label,
+              value: val.id
+            }))
+          }
+        });
+      },
+    },
   }
 </script>
 
