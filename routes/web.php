@@ -19,7 +19,8 @@ Auth::routes();
 
 Route::group(['prefix' => 'frontend', 'namespace' => 'Frontend'], function () {
     Route::group(['prefix' => 'event-analysis'], function () {
-        Route::get('event-list', 'EventAnalysisController@index');
+        Route::get('event-list', 'EventAnalysisController@eventList');
+        Route::get('attribute-list', 'EventAnalysisController@attributeList');
     });
 });
 

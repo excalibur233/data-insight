@@ -5,6 +5,28 @@ namespace DataInsight\DataSystem\EventModel;
 use DataInsight\DataSystem\AnalyticObject\TargetUser\TargetUser;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * DataInsight\DataSystem\EventModel\Event
+ *
+ * @property int $id
+ * @property int $target_user_id
+ * @property int $type_id
+ * @property string $description
+ * @property mixed $extra
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\DataInsight\DataSystem\EventModel\Attribute[] $attributes
+ * @property-read \DataInsight\DataSystem\AnalyticObject\TargetUser\TargetUser $targetUser
+ * @property-read \DataInsight\DataSystem\EventModel\EventType $type
+ * @method static \Illuminate\Database\Eloquent\Builder|\DataInsight\DataSystem\EventModel\Event whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\DataInsight\DataSystem\EventModel\Event whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\DataInsight\DataSystem\EventModel\Event whereExtra($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\DataInsight\DataSystem\EventModel\Event whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\DataInsight\DataSystem\EventModel\Event whereTargetUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\DataInsight\DataSystem\EventModel\Event whereTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\DataInsight\DataSystem\EventModel\Event whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Event extends Model
 {
     public function targetUser()
