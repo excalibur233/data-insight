@@ -43,4 +43,17 @@ class Event extends Model
     {
         return $this->belongsTo(EventType::class);
     }
+
+    public static function queryCountPeriod($begin, $end, $interval = 'day')
+    {
+        if ($interval == 'day') {
+            $query = <<<MYSQL
+SELECT DATE(`created_at`), COUNT(`id`) 
+FROM `events`
+WHERE `created_at` BETWEEN $begin AND $end
+GROUP BY DATE(`created_at`)
+MYSQL;
+            return \DB::raw($query);
+        }
+    }
 }
