@@ -47,12 +47,7 @@ class Event extends Model
     public static function queryCountPeriod($begin, $end, $interval = 'day')
     {
         if ($interval == 'day') {
-            $query = <<<MYSQL
-SELECT DATE(`created_at`), COUNT(`id`) 
-FROM `events`
-WHERE `created_at` BETWEEN $begin AND $end
-GROUP BY DATE(`created_at`)
-MYSQL;
+            $query = "SELECT DATE(`created_at`), COUNT(`id`) FROM `events` WHERE `created_at` BETWEEN $begin AND $end GROUP BY DATE(`created_at`)";
             return \DB::raw($query);
         }
     }
