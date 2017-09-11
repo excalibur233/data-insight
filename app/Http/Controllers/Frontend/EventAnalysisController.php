@@ -13,12 +13,12 @@ class EventAnalysisController extends Controller
 {
     public function eventList()
     {
-        return EventType::all()->toJson();
+        return EventType::all(['id', 'label'])->toJson();
     }
 
     public function attributeList()
     {
-        return AttributeType::all()->toJson();
+        return AttributeType::all(['id', 'label'])->toJson();
     }
 
     public function queryEventCount(Request $request)

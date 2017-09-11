@@ -3,6 +3,7 @@
 namespace DataInsight\DataSystem\EventModel;
 
 use DataInsight\DataSystem\AnalyticObject\TargetUser\TargetUser;
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -47,8 +48,10 @@ class Event extends Model
     public static function queryCountPeriod($begin, $end, $interval = 'day')
     {
         if ($interval == 'day') {
-            $query = "SELECT DATE(`created_at`), COUNT(`id`) FROM `events` WHERE `created_at` BETWEEN $begin AND $end GROUP BY DATE(`created_at`)";
-            return \DB::raw($query);
+            return DB::table('events')
+                ->select(DB::raw('DATE(`created_at`), COUNT(`id`)'))
+                ->whereRaw("`created_at` BETWEEN \"$begin\" AND \"$end\" GROUP BY DATE(`created_at`)")
+                ->get();
         }
     }
 }
